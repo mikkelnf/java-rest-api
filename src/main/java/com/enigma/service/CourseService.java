@@ -6,9 +6,12 @@ import com.enigma.mdel.Course;
 import com.enigma.repository.ICourseRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Primary;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
-
+import org.springframework.data.domain.Pageable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -23,6 +26,9 @@ public class CourseService implements ICourseService{
 
     @Autowired
     private ModelMapper modelMapper;
+
+    @Value("2")
+    String pageSize;
 
     @Override
     public List<Course> list() throws Exception {
@@ -110,5 +116,32 @@ public class CourseService implements ICourseService{
         }catch (NotFoundException e){
             throw new NotFoundException("Update Failed because ID is not found");
         }
+    }
+
+    @Override
+    public List<Course> findByTitleContains(String value) {
+        List<Course> courses = courseRepository.findByTitleContains(value);
+        if(courses.isEmpty()){
+            throw new NotFoundException("Course with " + value + " title is not found");
+        }
+        return courses;
+    }
+
+    @Override
+    public List<Course> findByDescriptionContains(String value) {
+        List<Course> courses = courseRepository.findByDescriptionContains(value);
+        if(courses.isEmpty()){
+            throw new NotFoundException("Course with " + value + " description is not found");
+        }
+        return courses;
+    }
+
+    @Override
+    public Page<Course> findByPagination(String page) {
+        Pageable pageReq = PageRequest.of(Integer.parseInt(page) -1 , Integer.parseInt(pageSize));
+
+        Page<Course> courseList = courseRepository.findWithPagination(pageReq);
+
+        return courseList;
     }
 }

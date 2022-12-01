@@ -5,6 +5,7 @@ import com.enigma.mdel.Course;
 import com.enigma.repository.CourseArrayRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -96,5 +97,18 @@ public class CourseArrayService implements ICourseService {
         }
     }
 
+    @Override
+    public List<Course> findByTitleContains(String value) {
+        return null;
+    }
 
+    @Override
+    public List<Course> findByDescriptionContains(String value) {
+        return null;
+    }
+
+    @Override
+    public Page<Course> findByPagination(String page) {
+        return null;
+    }
 }

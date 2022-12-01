@@ -9,6 +9,7 @@ import com.enigma.service.CourseArrayService;
 import com.enigma.service.CourseService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/courses")
@@ -31,6 +33,16 @@ public class CourseController {
     public ResponseEntity getAllCourse() throws Exception{
         try {
             List<Course> courses =  courseService.list();
+            return ResponseEntity.status(HttpStatus.OK).body(new SuccessResponse<>("Success get all data", courses));
+        }catch (Exception e){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ErrorResponse("X01", e.getMessage()));
+        }
+    }
+
+    @GetMapping(params = {"page"})
+    public ResponseEntity getAllCourseWithPagination(@RequestParam String page) throws Exception{
+        try {
+            List<Course> courses =  courseService.findByPagination(page).get().collect(Collectors.toList());
             return ResponseEntity.status(HttpStatus.OK).body(new SuccessResponse<>("Success get all data", courses));
         }catch (Exception e){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ErrorResponse("X01", e.getMessage()));
