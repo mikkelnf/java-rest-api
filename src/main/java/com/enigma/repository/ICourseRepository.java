@@ -20,4 +20,7 @@ public interface ICourseRepository extends JpaRepository<Course, String> {
 
     @Query("SELECT c FROM Course c ORDER BY c.title")
     Page<Course> findWithPagination(Pageable pageable);
+
+    @Query(value = "SELECT * FROM m_course c ORDER BY c.title LIMIT ?1 OFFSET ?2", nativeQuery = true)
+    List<Course> findWithPaginationWithoutPageable(int pageSize, int offset);
 }

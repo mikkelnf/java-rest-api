@@ -5,8 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7a074d6e-1ec4-4d60-958c-28960066b8f5" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/enigma/controller/CourseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/enigma/controller/CourseController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/enigma/mdel/Course.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/enigma/mdel/Course.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/enigma/repository/ICourseRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/enigma/repository/ICourseRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/enigma/service/CourseArrayService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/enigma/service/CourseArrayService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/enigma/service/CourseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/enigma/service/CourseService.java" afterDir="false" />

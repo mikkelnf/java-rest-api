@@ -39,10 +39,20 @@ public class CourseController {
         }
     }
 
-    @GetMapping(params = {"page"})
-    public ResponseEntity getAllCourseWithPagination(@RequestParam String page) throws Exception{
+//    @GetMapping(params = {"page", "pageSize"})
+//    public ResponseEntity getAllCourseWithPagination(@RequestParam String page, @RequestParam String pageSize) throws Exception{
+//        try {
+//            List<Course> courses =  courseService.findByPagination(page, pageSize).get().collect(Collectors.toList());
+//            return ResponseEntity.status(HttpStatus.OK).body(new SuccessResponse<>("Success get all data", courses));
+//        }catch (Exception e){
+//            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ErrorResponse("X01", e.getMessage()));
+//        }
+//    }
+
+    @GetMapping(params = {"page", "pageSize"})
+    public ResponseEntity getAllCourseWithPaginationWithoutPageable(@RequestParam String page, @RequestParam String pageSize) throws Exception{
         try {
-            List<Course> courses =  courseService.findByPagination(page).get().collect(Collectors.toList());
+            List<Course> courses =  courseService.findByPaginationWithoutPageable(page, pageSize);
             return ResponseEntity.status(HttpStatus.OK).body(new SuccessResponse<>("Success get all data", courses));
         }catch (Exception e){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ErrorResponse("X01", e.getMessage()));

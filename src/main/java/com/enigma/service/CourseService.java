@@ -137,11 +137,18 @@ public class CourseService implements ICourseService{
     }
 
     @Override
-    public Page<Course> findByPagination(String page) {
+    public Page<Course> findByPagination(String page, String pageSize) {
         Pageable pageReq = PageRequest.of(Integer.parseInt(page) -1 , Integer.parseInt(pageSize));
 
         Page<Course> courseList = courseRepository.findWithPagination(pageReq);
 
         return courseList;
+    }
+
+    @Override
+    public List<Course> findByPaginationWithoutPageable(String page, String size) {
+        int offset = (Integer.parseInt(page)-1)*Integer.parseInt(size);
+        int pageSize = Integer.parseInt(size);
+        return courseRepository.findWithPaginationWithoutPageable(pageSize, offset);
     }
 }

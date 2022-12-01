@@ -21,5 +21,6 @@ public interface ICourseService {
 
     List<Course> findByDescriptionContains(String value);
 
-    Page<Course> findByPagination(String page);
+    Page<Course> findByPagination(String page, String pageSize);
+    List<Course> findByPaginationWithoutPageable(String page, String pageSize);
 }

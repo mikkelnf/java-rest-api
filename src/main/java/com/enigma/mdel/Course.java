@@ -10,6 +10,7 @@ public class Course {
     @Id
     @GeneratedValue(generator = "system-uuid")
     @GenericGenerator(name = "system-uuid", strategy = "uuid2")
+    @Column(name = "course_id")
     private String courseId;
 
     @Column(name = "title", nullable = false, length = 150, unique = true)

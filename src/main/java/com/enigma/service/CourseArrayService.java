@@ -108,7 +108,12 @@ public class CourseArrayService implements ICourseService {
     }
 
     @Override
-    public Page<Course> findByPagination(String page) {
+    public Page<Course> findByPagination(String page, String pageSize) {
+        return null;
+    }
+
+    @Override
+    public List<Course> findByPaginationWithoutPageable(String page, String pageSize) {
         return null;
     }
 }
