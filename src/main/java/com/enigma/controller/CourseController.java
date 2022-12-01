@@ -6,6 +6,7 @@ import com.enigma.mdel.request.CourseRequest;
 import com.enigma.mdel.response.ErrorResponse;
 import com.enigma.mdel.response.SuccessResponse;
 import com.enigma.service.CourseArrayService;
+import com.enigma.service.CourseService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,7 +22,7 @@ import java.util.List;
 @Validated
 public class CourseController {
     @Autowired
-    private CourseArrayService courseService;
+    private CourseService courseService;
 
     @Autowired
     private ModelMapper modelMapper;

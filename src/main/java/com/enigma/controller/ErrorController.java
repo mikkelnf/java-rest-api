@@ -1,7 +1,9 @@
 package com.enigma.controller;
 
+import com.enigma.exception.EntityExistException;
 import com.enigma.exception.NotFoundException;
 import com.enigma.mdel.response.ErrorResponse;
+import org.hibernate.action.internal.EntityActionVetoException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
@@ -31,5 +33,10 @@ public class ErrorController {
             errors.add(error.getDefaultMessage());
         }
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ErrorResponse("X02", errors.toString()));
+    }
+
+    @ExceptionHandler(EntityActionVetoException.class)
+    public ResponseEntity<ErrorResponse> handleEntityExistViolationException(EntityExistException exception){
+        return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).body(new ErrorResponse("X03", exception.getMessage()));
     }
 }
