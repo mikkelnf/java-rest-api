@@ -5,22 +5,23 @@ import com.enigma.mdel.Course;
 import com.enigma.mdel.request.CourseRequest;
 import com.enigma.mdel.response.ErrorResponse;
 import com.enigma.mdel.response.SuccessResponse;
-import com.enigma.service.CourseService;
+import com.enigma.service.CourseArrayService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
-import java.util.Map;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/courses")
+@Validated
 public class CourseController {
     @Autowired
-    private CourseService courseService;
+    private CourseArrayService courseService;
 
     @Autowired
     private ModelMapper modelMapper;
@@ -36,7 +37,7 @@ public class CourseController {
     }
 
     @PostMapping
-    public ResponseEntity createCourse(@RequestBody CourseRequest courseRequest) throws Exception{
+    public ResponseEntity createCourse(@Valid @RequestBody CourseRequest courseRequest) throws Exception{
         try {
             Course newCourse = modelMapper.map(courseRequest, Course.class);
             Course result = courseService.create(newCourse);
@@ -75,5 +76,11 @@ public class CourseController {
         }catch (Exception e){
             return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).body(new ErrorResponse("X02", e.getMessage()));
         }
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity deleteCourseById(@PathVariable("id") String id) throws Exception{
+        courseService.delete(id);
+        return ResponseEntity.status(HttpStatus.OK).body(new SuccessResponse<>("Success deleted course", null));
     }
 }

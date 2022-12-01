@@ -1,8 +1,17 @@
 package com.enigma.mdel.request;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
+
 public class CourseRequest {
+
+    @NotBlank(message = "{invalid.title.required}")
+    @NotNull
     private String title;
     private String description;
+    @NotBlank(message = "{invalid.link.required}")
+    @NotNull
     private String link;
 
     public String getTitle() {

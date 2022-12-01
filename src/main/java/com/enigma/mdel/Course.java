@@ -1,9 +1,24 @@
 package com.enigma.mdel;
 
+import org.hibernate.annotations.GenericGenerator;
+
+import javax.persistence.*;
+
+@Entity
+@Table(name = "m_course")
 public class Course {
+    @Id
+    @GeneratedValue(generator = "system-uuid")
+    @GenericGenerator(name = "system-uuid", strategy = "uuid2")
     private String courseId;
+
+    @Column(name = "title", nullable = false, length = 150, unique = true)
     private String title;
+
+    @Column(nullable = false, length = 200)
     private String description;
+
+    @Column(name = "link", length = 150)
     private String link;
 
     public String getCourseId() {

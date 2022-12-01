@@ -2,99 +2,61 @@ package com.enigma.service;
 
 import com.enigma.exception.NotFoundException;
 import com.enigma.mdel.Course;
-import com.enigma.repository.CourseRepository;
+import com.enigma.repository.ICourseRepository;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
+@Primary
 public class CourseService implements ICourseService{
 
-    @Value("3")
-    Integer dataLength;
+    @Autowired
+    private ICourseRepository courseRepository;
 
     @Autowired
-    private CourseRepository courseRepository;
+    private ModelMapper modelMapper;
 
     @Override
-    public List<Course> list() throws Exception{
-        List<Course> courseList = courseRepository.getAll();
-        if(courseList.isEmpty()){
-            throw new NotFoundException();
-        }
+    public List<Course> list() throws Exception {
+        List<Course> courseList = courseRepository.findAll();
         return courseList;
     }
 
     @Override
-    public Course create(Course course) throws Exception{
-        if(!(courseRepository.getAll().size() < dataLength)){
-            throw new Exception("Data is Full");
-        }
-        return courseRepository.create(course);
+    public Course create(Course course) throws Exception {
+        Course newCourse = courseRepository.save(course);
+        return newCourse;
     }
 
     @Override
-    public Course get(String id) throws Exception{
-        Optional<Course> course = courseRepository.getById(id);
+    public Course get(String id) throws Exception {
+        Optional<Course> course = courseRepository.findById(id);
         if(course.isEmpty()){
-            throw new NotFoundException();
+            throw new NotFoundException("Course not fond");
         }
+        return course.get();
+    }
+
+    @Override
+    public List<Course> getBy(String keyword, String data) throws Exception {
         return null;
     }
 
     @Override
-    public List<Course> getBy(String keyword, String data) throws Exception{
-        List<Course> courseResults = new ArrayList<>();
-        if(courseRepository.getAll().isEmpty()){
-            throw new NotFoundException();
-        }
-        try {
-            switch (keyword){
-                case "id":
-                    courseResults = courseRepository.getAll().stream().filter(x->x.getCourseId().equalsIgnoreCase(data.toLowerCase())).collect(Collectors.toList());
-                    return courseResults;
-                case "desc":
-                    courseResults = courseRepository.getAll().stream().filter(x->x.getDescription().equalsIgnoreCase(data.toLowerCase())).collect(Collectors.toList());
-                    return courseResults;
-                case "link":
-                    courseResults = courseRepository.getAll().stream().filter(x->x.getLink().equalsIgnoreCase(data.toLowerCase())).collect(Collectors.toList());
-                    return courseResults;
-                case "title":
-                    courseResults = courseRepository.getAll().stream().filter(x->x.getTitle().equalsIgnoreCase(data.toLowerCase())).collect(Collectors.toList());
-                    return courseResults;
-                default:
-                    return null;
-            }
-        }catch (Exception e){
-            throw new RuntimeException(e);
-        }
+    public void update(Course course, String id) throws Exception {
+        Course existingCourse = get(id);
+        modelMapper.map(course, existingCourse);
+        courseRepository.save(existingCourse);
     }
 
     @Override
-    public void update(Course course, String id) throws Exception{
-        try {
-            Course existingCourse = get(id);
-            courseRepository.update(course, existingCourse.getCourseId());
-        }catch (Exception e){
-            throw new RuntimeException(e);
-        }
+    public void delete(String id) throws Exception {
+        Course existingCourse = get(id);
+        courseRepository.delete(existingCourse);
     }
-
-    @Override
-    public void delete(String id) throws Exception{
-        try {
-            Course course = get(id);
-
-            courseRepository.delete(id);
-        }catch (Exception e){
-            throw new RuntimeException(e);
-        }
-    }
-
-
 }
