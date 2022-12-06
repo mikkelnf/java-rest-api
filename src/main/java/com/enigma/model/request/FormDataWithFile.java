@@ -1,4 +1,4 @@
-package com.enigma.mdel.request;
+package com.enigma.model.request;
 
 import org.springframework.web.multipart.MultipartFile;
 

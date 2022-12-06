@@ -1,4 +1,4 @@
-package com.enigma.mdel.response;
+package com.enigma.model.response;
 
 public class ErrorResponse extends CommonResponse{
     public ErrorResponse(String code, String message){

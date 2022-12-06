@@ -2,9 +2,9 @@ package com.enigma.repository;
 
 import com.enigma.exception.NotFoundException;
 import com.enigma.exception.RestTemplateException;
-import com.enigma.mdel.request.CoursePaymentRequest;
-import com.enigma.mdel.response.CoursePaymentResponse;
-import com.enigma.mdel.response.SuccessResponse;
+import com.enigma.model.request.CoursePaymentRequest;
+import com.enigma.model.response.CoursePaymentResponse;
+import com.enigma.model.response.SuccessResponse;
 import com.enigma.repository.interfaces.ICoursePaymentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;

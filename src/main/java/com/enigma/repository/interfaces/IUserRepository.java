@@ -1,6 +1,6 @@
 package com.enigma.repository.interfaces;
 
-import com.enigma.mdel.User;
+import com.enigma.model.User;
 
 public interface IUserRepository {
     User[] getUsers();

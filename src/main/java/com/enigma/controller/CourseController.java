@@ -1,23 +1,24 @@
 package com.enigma.controller;
 
 
-import com.enigma.mdel.Course;
-import com.enigma.mdel.request.CourseRequest;
-import com.enigma.mdel.response.ErrorResponse;
-import com.enigma.mdel.response.SuccessResponse;
-import com.enigma.service.CourseArrayService;
+import com.enigma.model.Course;
+import com.enigma.model.request.CourseRequest;
+import com.enigma.model.request.FormDataWithFile;
+import com.enigma.model.response.ErrorResponse;
+import com.enigma.model.response.SuccessResponse;
 import com.enigma.service.CourseService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.MultiValueMap;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/courses")
@@ -59,14 +60,31 @@ public class CourseController {
         }
     }
 
+//    @PostMapping
+//    public ResponseEntity createCourse(@Valid @RequestBody CourseRequest courseRequest) throws Exception{
+//        try {
+//            Course newCourse = modelMapper.map(courseRequest, Course.class);
+//            Course result = courseService.create(newCourse);
+//            return ResponseEntity.status(HttpStatus.CREATED).body(new SuccessResponse<>("Success create course", result));
+//        }catch (Exception e){
+//            return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).body(new ErrorResponse("X02", e.getMessage()));
+//        }
+//    }
+
     @PostMapping
-    public ResponseEntity createCourse(@Valid @RequestBody CourseRequest courseRequest) throws Exception{
+    public Course createCourse(@Valid FormDataWithFile formDataWithFile, @ModelAttribute CourseRequest courseRequest) throws Exception{
         try {
+//            System.out.println(courseRequest);
+//            Course result = courseService.create(newCourse);
+//            return ResponseEntity.status(HttpStatus.CREATED).body(new SuccessResponse<>("Success create course", result));
+            MultipartFile file = formDataWithFile.getFile();
+            String fileName = file.getOriginalFilename();
             Course newCourse = modelMapper.map(courseRequest, Course.class);
-            Course result = courseService.create(newCourse);
-            return ResponseEntity.status(HttpStatus.CREATED).body(new SuccessResponse<>("Success create course", result));
+            newCourse.setFileName(fileName);
+            return newCourse;
         }catch (Exception e){
-            return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).body(new ErrorResponse("X02", e.getMessage()));
+            throw e;
+//            return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).body(new ErrorResponse("X02", e.getMessage()));
         }
     }
 

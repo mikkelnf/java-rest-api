@@ -2,7 +2,7 @@ package com.enigma.service;
 
 import com.enigma.exception.EntityExistException;
 import com.enigma.exception.NotFoundException;
-import com.enigma.mdel.Course;
+import com.enigma.model.Course;
 import com.enigma.repository.interfaces.ICourseRepository;
 import com.enigma.service.interfaces.ICourseService;
 import org.modelmapper.ModelMapper;

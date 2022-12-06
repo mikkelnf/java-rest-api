@@ -1,4 +1,4 @@
-package com.enigma.mdel.response;
+package com.enigma.model.response;
 
 public abstract class CommonResponse {
     private String code;

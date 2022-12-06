@@ -1,7 +1,7 @@
 package com.enigma.service;
 
-import com.enigma.mdel.request.CoursePaymentRequest;
-import com.enigma.mdel.response.CoursePaymentResponse;
+import com.enigma.model.request.CoursePaymentRequest;
+import com.enigma.model.response.CoursePaymentResponse;
 import com.enigma.repository.interfaces.ICoursePaymentRepository;
 import com.enigma.service.interfaces.ICoursePaymentService;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,6 +1,6 @@
 package com.enigma.repository.interfaces;
 
-import com.enigma.mdel.Course;
+import com.enigma.model.Course;
 
 import java.util.List;
 import java.util.Optional;

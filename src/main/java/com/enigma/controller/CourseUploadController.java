@@ -1,8 +1,7 @@
 package com.enigma.controller;
 
-import com.enigma.mdel.request.FormDataWithFile;
-import com.enigma.mdel.response.SuccessResponse;
-import com.enigma.service.CourseUploadService;
+import com.enigma.model.request.FormDataWithFile;
+import com.enigma.model.response.SuccessResponse;
 import com.enigma.service.interfaces.ICourseUploadService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;

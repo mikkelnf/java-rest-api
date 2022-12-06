@@ -1,6 +1,6 @@
 package com.enigma.repository;
 
-import com.enigma.mdel.User;
+import com.enigma.model.User;
 import com.enigma.repository.interfaces.IUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;

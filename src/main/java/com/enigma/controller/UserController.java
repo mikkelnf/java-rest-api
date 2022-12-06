@@ -1,7 +1,7 @@
 package com.enigma.controller;
 
-import com.enigma.mdel.User;
-import com.enigma.mdel.response.SuccessResponse;
+import com.enigma.model.User;
+import com.enigma.model.response.SuccessResponse;
 import com.enigma.service.interfaces.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

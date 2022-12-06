@@ -1,9 +1,9 @@
 package com.enigma.controller;
 
-import com.enigma.mdel.request.CoursePaymentRequest;
-import com.enigma.mdel.response.CoursePaymentResponse;
-import com.enigma.mdel.response.ErrorResponse;
-import com.enigma.mdel.response.SuccessResponse;
+import com.enigma.model.request.CoursePaymentRequest;
+import com.enigma.model.response.CoursePaymentResponse;
+import com.enigma.model.response.ErrorResponse;
+import com.enigma.model.response.SuccessResponse;
 import com.enigma.service.interfaces.ICoursePaymentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

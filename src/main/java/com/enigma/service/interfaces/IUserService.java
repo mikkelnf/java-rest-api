@@ -1,6 +1,6 @@
 package com.enigma.service.interfaces;
 
-import com.enigma.mdel.User;
+import com.enigma.model.User;
 
 public interface IUserService {
     User[] getUsers();

@@ -1,4 +1,4 @@
-package com.enigma.mdel.request;
+package com.enigma.model.request;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;

@@ -1,4 +1,4 @@
-package com.enigma.mdel;
+package com.enigma.model;
 
 public class User {
     private String id;

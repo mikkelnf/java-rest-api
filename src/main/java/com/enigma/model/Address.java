@@ -1,4 +1,4 @@
-package com.enigma.mdel;
+package com.enigma.model;
 
 public class Address {
     private String street;

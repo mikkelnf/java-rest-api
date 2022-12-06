@@ -1,12 +1,21 @@
-package com.enigma.mdel;
+package com.enigma.model;
 
 import org.hibernate.annotations.GenericGenerator;
+import org.springframework.beans.factory.annotation.Value;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "m_course")
 public class Course {
+    @Column(name = "file_directory", length = 150)
+    @Value("${upload.path}")
+    private String fileDirectory;
+
+    public Course(@Value("${upload.path}") String fileDirectory) {
+        this.fileDirectory = fileDirectory;
+    }
+
     @Id
     @GeneratedValue(generator = "system-uuid")
     @GenericGenerator(name = "system-uuid", strategy = "uuid2")
@@ -21,6 +30,9 @@ public class Course {
 
     @Column(name = "link", length = 150)
     private String link;
+
+    @Column(name = "file_name", length = 150)
+    private String fileName;
 
     public String getCourseId() {
         return courseId;
@@ -52,5 +64,21 @@ public class Course {
 
     public void setLink(String link) {
         this.link = link;
+    }
+
+    public String getFileDirectory() {
+        return fileDirectory;
+    }
+
+    public void setFileDirectory(String fileDirectory) {
+        this.fileDirectory = fileDirectory;
+    }
+
+    public String getFileName() {
+        return fileName;
+    }
+
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
     }
 }

@@ -1,4 +1,4 @@
-package com.enigma.mdel.response;
+package com.enigma.model.response;
 
 import org.springframework.http.HttpStatus;
 

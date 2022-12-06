@@ -1,4 +1,4 @@
-package com.enigma.mdel.request;
+package com.enigma.model.request;
 
 public class CoursePaymentRequest {
     private String customerId;

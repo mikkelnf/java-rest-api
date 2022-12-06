@@ -3,7 +3,7 @@ package com.enigma.controller;
 import com.enigma.exception.EntityExistException;
 import com.enigma.exception.NotFoundException;
 import com.enigma.exception.RestTemplateException;
-import com.enigma.mdel.response.ErrorResponse;
+import com.enigma.model.response.ErrorResponse;
 import org.hibernate.action.internal.EntityActionVetoException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
