@@ -11,6 +11,8 @@ public class SuccessResponse<T> extends CommonResponse{
         this.data = data;
     }
 
+    public SuccessResponse(){};
+
     public T getData() {
         return data;
     }
