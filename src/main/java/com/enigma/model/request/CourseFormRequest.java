@@ -1,21 +1,15 @@
 package com.enigma.model.request;
 
-import com.enigma.model.CourseInfo;
-import com.enigma.model.CourseType;
-
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
-
-public class CourseRequest {
+public class CourseFormRequest {
     @NotBlank(message = "{invalid.title.required}")
     @NotNull
     private String title;
     @NotBlank(message = "{invalid.description.required}")
     @NotNull
     private String description;
-    @NotBlank(message = "{invalid.link.required}")
-    @NotNull
     private String link;
     @NotBlank(message = "{invalid.duration.required}")
     @NotNull
@@ -23,8 +17,11 @@ public class CourseRequest {
     @NotBlank(message = "{invalid.level.required}")
     @NotNull
     private String level;
+
     @NotNull(message = "{invalid.courseType.required}")
     private Integer courseTypeId;
+
+    private String fileName;
 
     public String getTitle() {
         return title;

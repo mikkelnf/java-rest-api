@@ -8,14 +8,6 @@ import javax.persistence.*;
 @Entity
 @Table(name = "m_course")
 public class Course {
-    @Column(name = "file_directory", length = 150)
-    @Value("${upload.path}")
-    private String fileDirectory;
-
-    public Course(@Value("${upload.path}") String fileDirectory) {
-        this.fileDirectory = fileDirectory;
-    }
-
     @Id
     @GeneratedValue(generator = "system-uuid")
     @GenericGenerator(name = "system-uuid", strategy = "uuid2")
@@ -30,6 +22,14 @@ public class Course {
 
     @Column(name = "link", length = 150)
     private String link;
+
+    @ManyToOne
+    @JoinColumn(name = "course_type_id")
+    private CourseType courseType;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "course_info_id")
+    private CourseInfo courseInfo;
 
     @Column(name = "file_name", length = 150)
     private String fileName;
@@ -66,19 +66,27 @@ public class Course {
         this.link = link;
     }
 
-    public String getFileDirectory() {
-        return fileDirectory;
-    }
-
-    public void setFileDirectory(String fileDirectory) {
-        this.fileDirectory = fileDirectory;
-    }
-
     public String getFileName() {
         return fileName;
     }
 
     public void setFileName(String fileName) {
         this.fileName = fileName;
+    }
+
+    public CourseType getCourseType() {
+        return courseType;
+    }
+
+    public void setCourseType(CourseType courseType) {
+        this.courseType = courseType;
+    }
+
+    public CourseInfo getCourseInfo() {
+        return courseInfo;
+    }
+
+    public void setCourseInfo(CourseInfo courseInfo) {
+        this.courseInfo = courseInfo;
     }
 }
