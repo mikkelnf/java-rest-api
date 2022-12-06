@@ -1,4 +1,4 @@
-package com.enigma.service;
+package com.enigma.service.interfaces;
 
 import com.enigma.mdel.Course;
 import org.springframework.data.domain.Page;

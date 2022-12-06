@@ -1,12 +1,13 @@
 package com.enigma.service;
 
 import com.enigma.mdel.User;
-import com.enigma.repository.IUserRepository;
+import com.enigma.repository.interfaces.IUserRepository;
+import com.enigma.service.interfaces.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class UserService implements IUserService{
+public class UserService implements IUserService {
     IUserRepository userRepository;
 
     public UserService(@Autowired IUserRepository userRepository) {

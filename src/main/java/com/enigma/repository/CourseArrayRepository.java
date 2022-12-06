@@ -1,6 +1,7 @@
 package com.enigma.repository;
 
 import com.enigma.mdel.Course;
+import com.enigma.repository.interfaces.ICourseArrayRepository;
 import com.enigma.util.IRandomStringGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;

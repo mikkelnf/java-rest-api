@@ -2,13 +2,13 @@ package com.enigma.service;
 
 import com.enigma.mdel.request.CoursePaymentRequest;
 import com.enigma.mdel.response.CoursePaymentResponse;
-import com.enigma.repository.CoursePaymentRepository;
-import com.enigma.repository.ICoursePaymentRepository;
+import com.enigma.repository.interfaces.ICoursePaymentRepository;
+import com.enigma.service.interfaces.ICoursePaymentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class CoursePaymentService implements ICoursePaymentService{
+public class CoursePaymentService implements ICoursePaymentService {
 
     private ICoursePaymentRepository coursePaymentRepository;
 

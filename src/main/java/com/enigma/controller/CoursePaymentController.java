@@ -4,7 +4,7 @@ import com.enigma.mdel.request.CoursePaymentRequest;
 import com.enigma.mdel.response.CoursePaymentResponse;
 import com.enigma.mdel.response.ErrorResponse;
 import com.enigma.mdel.response.SuccessResponse;
-import com.enigma.service.ICoursePaymentService;
+import com.enigma.service.interfaces.ICoursePaymentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

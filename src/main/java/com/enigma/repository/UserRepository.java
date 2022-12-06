@@ -1,8 +1,7 @@
 package com.enigma.repository;
 
 import com.enigma.mdel.User;
-import com.enigma.mdel.response.CoursePaymentResponse;
-import com.enigma.mdel.response.SuccessResponse;
+import com.enigma.repository.interfaces.IUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
@@ -10,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.web.client.RestTemplate;
 
 @Repository
-public class UserRepository implements IUserRepository{
+public class UserRepository implements IUserRepository {
 
     @Value("${service.userUrl}")
     String userUrl;

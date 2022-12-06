@@ -3,7 +3,8 @@ package com.enigma.service;
 import com.enigma.exception.EntityExistException;
 import com.enigma.exception.NotFoundException;
 import com.enigma.mdel.Course;
-import com.enigma.repository.ICourseRepository;
+import com.enigma.repository.interfaces.ICourseRepository;
+import com.enigma.service.interfaces.ICourseService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -19,7 +20,7 @@ import java.util.stream.Collectors;
 
 @Service
 @Primary
-public class CourseService implements ICourseService{
+public class CourseService implements ICourseService {
 
     @Autowired
     private ICourseRepository courseRepository;

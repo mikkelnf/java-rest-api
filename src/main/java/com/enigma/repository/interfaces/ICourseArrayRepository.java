@@ -1,4 +1,4 @@
-package com.enigma.repository;
+package com.enigma.repository.interfaces;
 
 import com.enigma.mdel.Course;
 
